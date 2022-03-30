@@ -1,5 +1,5 @@
 import React from 'react';
-import { IEvent, IEventListProps } from '../../pages/types';
+import { IEvent, IEventListProps } from '../../types';
 import EventItem from '../EventItem/EventItem';
 import classes from './EventList.module.css';
 

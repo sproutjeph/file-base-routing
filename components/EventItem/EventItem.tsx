@@ -1,7 +1,7 @@
 import Image from 'next/image';
 import Link from 'next/link';
 import React from 'react';
-import { IEvent } from '../../pages/types';
+import { IEvent } from '../../types';
 import AddressIcon from '../Icons/AddressIcon';
 import ArrowRightIcon from '../Icons/ArrowRightIcon';
 import DateIcon from '../Icons/DateIcon';
@@ -20,7 +20,7 @@ const EventItem = ({ title, image, date, location, id }: IEvent) => {
 
   return (
     <li className={classes.item}>
-      <Image src={'/' + image} alt={title} width={300} height={300} />
+      <Image src={'/' + image} alt={title} width={340} height={150} />
 
       <div className={classes.content}>
         <div className={classes.summary}>

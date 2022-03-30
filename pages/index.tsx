@@ -1,25 +1,33 @@
 import type { NextPage } from 'next';
 import Head from 'next/head';
-import { EventList } from '../components';
-import { getFeaturedEvents } from '../dummy-data';
-import { IEvent } from './types';
+import { EventList, NewsLetterReg } from '../components';
+import { getFeaturedEvents } from '../helpers/api-util';
+import { IEvent } from '../types';
 
-const HomePage: NextPage = () => {
-  const featuredEvents: IEvent[] = getFeaturedEvents();
-
+const HomePage: NextPage = ({ featuredEvents }: any) => {
   return (
-    <div className="">
+    <>
       <Head>
-        <title>Next Demo</title>
-        <meta name="description" content="Next Demo" />
+        <title>Next Events</title>
+        <meta name="description" content="Find Next.js  Events around you" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
+      <NewsLetterReg />
 
-      <main className="">
-        <EventList events={featuredEvents} />
-      </main>
-    </div>
+      <EventList events={featuredEvents} />
+    </>
   );
 };
+
+export async function getStaticProps() {
+  const featuredEvents = await getFeaturedEvents();
+
+  return {
+    props: {
+      featuredEvents: featuredEvents,
+    },
+    revalidate: 1800,
+  };
+}
 
 export default HomePage;
